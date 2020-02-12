@@ -1,3 +1,4 @@
+import { DeleteTodoAction } from "./../todo.actions";
 import { Validators } from "@angular/forms";
 import { FormControl } from "@angular/forms";
 import { Todo } from "./../model/todo.model";
@@ -40,6 +41,11 @@ export class TodoItemComponent implements OnInit {
     if (this.txtInput.invalid) return;
     if (this.txtInput.value === this.todo.text) return;
     const action = new EditTodoAction(this.todo.id, this.txtInput.value);
+    this.store.dispatch(action);
+  }
+
+  destroy() {
+    const action = new DeleteTodoAction(this.todo.id);
     this.store.dispatch(action);
   }
 }
