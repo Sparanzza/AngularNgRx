@@ -4,7 +4,7 @@ import { Todo } from "./../model/todo.model";
 import { Component, OnInit, Input, ViewChild, ElementRef } from "@angular/core";
 import { AppState } from "src/app/app.reducers";
 import { Store } from "@ngrx/store";
-import { ToggleTodoAction } from "../todo.actions";
+import { ToggleTodoAction, EditTodoAction } from "../todo.actions";
 @Component({
   selector: "app-todo-item",
   templateUrl: "./todo-item.component.html",
@@ -37,5 +37,9 @@ export class TodoItemComponent implements OnInit {
   }
   finishEdit() {
     this.editing = false;
+    if (this.txtInput.invalid) return;
+    if (this.txtInput.value === this.todo.text) return;
+    const action = new EditTodoAction(this.todo.id, this.txtInput.value);
+    this.store.dispatch(action);
   }
 }

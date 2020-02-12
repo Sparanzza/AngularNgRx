@@ -29,6 +29,19 @@ export function todoReducer(
           return todoEdit;
         }
       });
+
+    case fromTodo.EDIT_TODO:
+      return state.map(todoEdit => {
+        if (todoEdit.id === action.id) {
+          return {
+            ...todoEdit,
+            text: action.text
+          };
+        } else {
+          return todoEdit;
+        }
+      });
+
     default:
       return state;
   }
