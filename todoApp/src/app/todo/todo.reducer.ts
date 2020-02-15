@@ -30,6 +30,14 @@ export function todoReducer(
         }
       });
 
+    case fromTodo.TOGGLE_ALL_TODO:
+      return state.map(todoEdit => {
+        return {
+          ...todoEdit,
+          completed: action.completed
+        };
+      });
+
     case fromTodo.EDIT_TODO:
       return state.map(todoEdit => {
         if (todoEdit.id === action.id) {
