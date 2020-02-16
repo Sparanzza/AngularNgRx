@@ -52,6 +52,8 @@ export function todoReducer(
 
     case fromTodo.DELETE_TODO:
       return state.filter(todoEdit => todoEdit.id !== action.id);
+    case fromTodo.DELETE_ALL_TODO:
+      return state.filter(todoEdit => !todoEdit.completed);
     default:
       return state;
   }

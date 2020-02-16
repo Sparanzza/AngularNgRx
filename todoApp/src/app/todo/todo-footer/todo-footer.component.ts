@@ -3,6 +3,7 @@ import { AppState } from "src/app/app.reducers";
 import { Store } from "@ngrx/store";
 import { Component, OnInit } from "@angular/core";
 import * as fromFilter from "../../filter/filter.actions";
+import * as fromTodo from "../todo.actions";
 @Component({
   selector: "app-todo-footer",
   templateUrl: "./todo-footer.component.html",
@@ -28,5 +29,9 @@ export class TodoFooterComponent implements OnInit {
 
   countPending(todos: Todo[]) {
     this.pending = todos.filter(todo => !todo.completed).length;
+  }
+  clearCompleted() {
+    const action = new fromTodo.DeleteAllTodoAction();
+    this.store.dispatch(action);
   }
 }
