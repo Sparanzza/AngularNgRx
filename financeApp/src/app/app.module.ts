@@ -10,6 +10,7 @@ import { DetailComponent } from './deposit/detail/detail.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     DetailComponent,
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule
